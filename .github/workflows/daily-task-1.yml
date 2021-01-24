@@ -84,11 +84,7 @@ jobs:
     - name: Run unicom daily task
       if: ${{ env.ENABLE_UNICOM }}
       env:
-        accountSn: ${{secrets.SN}}
-        user-1: ${{secrets.HAOMA}}
-        user-2: ${{secrets.HAOMA}}
+        user: ${{secrets.HAOMA3}}
         password-1: ${{secrets.MM}}
-        password-2: ${{secrets.MM}}
-        appid-1: ${{secrets.APPID}}
-        appid-2: ${{secrets.APPID}}
-      run: node index.js unicom --accountSn  --tryrun
+        appid: ${{secrets.APPID}}
+      run: node index.js unicom --user=${user} --password=${password} --appid=${appid} --accountSn  --tryrun
