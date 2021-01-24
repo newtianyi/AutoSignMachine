@@ -24,12 +24,15 @@ exports.handler = async function (argv) {
         let accountSns = argv.accountSn.split(',')
         for (let sn of accountSns) {
             if (('user-' + sn) in argv) {
-                accounts.push({
+                let account = {
                     cookies: argv['cookies-' + sn],
-                    user: argv['user-' + sn],
-                    tryrun: argv['tryrun-' + sn],
+                    user: argv['user-' + sn] + '',
                     tasks: argv['tasks-' + sn]
-                })
+                }
+                if (('tryrun-' + sn) in argv) {
+                    account['tryrun'] = true
+                }
+                accounts.push(account)
             }
         }
     } else {
@@ -44,7 +47,7 @@ exports.handler = async function (argv) {
             options: {}
         }).catch(err => console.log("10086签到任务:", err.message))
         let hasTasks = await scheduler.hasWillTask(command, {
-            tryrun: 'tryrun' in account,
+            tryrun: 'tryrun' in argv,
             taskKey: account.user
         })
         if (hasTasks) {

@@ -35,15 +35,18 @@ exports.handler = async function (argv) {
     let accountSns = argv.accountSn.split(',')
     for (let sn of accountSns) {
       if (('P00PRU-' + sn) in argv) {
-        accounts.push({
+        let account = {
           P00001: argv['P00001-' + sn],
           P00PRU: argv['P00PRU-' + sn],
           P00PRU: argv['P00PRU-' + sn],
           QC005: argv['QC005-' + sn],
           dfp: argv['dfp-' + sn],
-          tryrun: argv['tryrun-' + sn],
           tasks: argv['tasks-' + sn]
-        })
+        }
+        if (('tryrun-' + sn) in argv) {
+          account['tryrun'] = true
+        }
+        accounts.push(account)
       }
     }
   } else {
@@ -57,14 +60,14 @@ exports.handler = async function (argv) {
       cookies: {
         P00001: account.P00001,
         P00003: account.P00PRU,
-        P00PRU: account.P00PRU,
+        P00PRU: account.P00PRU + '',
         QC005: account.QC005,
         _dfp: account.dfp
       },
       options: {}
     }).catch(err => console.log("iqiyi签到任务:", err.message))
     let hasTasks = await scheduler.hasWillTask(command, {
-      tryrun: 'tryrun' in account,
+      tryrun: 'tryrun' in argv,
       taskKey: account.P00PRU
     })
     if (hasTasks) {
