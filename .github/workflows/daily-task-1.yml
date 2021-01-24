@@ -33,10 +33,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-           - name: 运行时间
-             run: |
-              time=$(curl -s "http://quan.suning.com/getSysTime.do")
-              echo -e "当前时间：\n${time}"
+    - name: 运行时间
+      run: |
+       time=$(curl -s "http://quan.suning.com/getSysTime.do")
+       echo -e "当前时间：\n${time}"
       
     # 设置服务器时区为东八区 
     - name: Set time zone
