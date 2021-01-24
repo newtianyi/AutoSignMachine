@@ -32,6 +32,11 @@ jobs:
     # 检出
     - name: Checkout
       uses: actions/checkout@v2
+
+           - name: 运行时间
+             run: |
+              time=$(curl -s "http://quan.suning.com/getSysTime.do")
+              echo -e "当前时间：\n${time}"
       
     # 设置服务器时区为东八区 
     - name: Set time zone
@@ -46,11 +51,6 @@ jobs:
     # 安装依赖
     - name: Install dependencies
       run: npm install
-
-    - name: 运行时间
-      run: |
-       time=$(curl -s "http://quan.suning.com/getSysTime.do")
-       echo -e "当前时间：\n${time}"
        
     # 运行 52pojie 签到任务
     #- name: Run 52pojie daily task
@@ -81,10 +81,14 @@ jobs:
       #run: node index.js iqiyi --P00001=${P00001} --P00PRU=${P00PRU} --QC005=${QC005} --dfp=${dfp}
 
     # 运行 unicom 签到任务
-    - name: Run unicom daily task 1
+    - name: Run unicom daily task
       if: ${{ env.ENABLE_UNICOM }}
       env:
-        user: ${{secrets.HAOMA}}
-        password: ${{secrets.MM}}
-        appid: ${{secrets.APPID}}
-      run: node index.js unicom --user=${user} --password=${password} --appid=${appid}  --tryrun
+        accountSn: ${{secrets.SN}}
+        user-1: ${{secrets.HAOMA}}
+        user-2: ${{secrets.HAOMA}}
+        password-1: ${{secrets.MM}}
+        password-2: ${{secrets.MM}}
+        appid-1: ${{secrets.APPID}}
+        appid-2: ${{secrets.APPID}}
+      run: node index.js unicom --accountSn  --tryrun
