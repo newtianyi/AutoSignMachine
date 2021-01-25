@@ -81,10 +81,10 @@ jobs:
       #run: node index.js iqiyi --P00001=${P00001} --P00PRU=${P00PRU} --QC005=${QC005} --dfp=${dfp}
 
     # 运行 unicom 签到任务
-    - name: Run unicom daily task
+    - name: Run unicom daily task 1
       if: ${{ env.ENABLE_UNICOM }}
       env:
-        user: ${{secrets.HAOMA3}}
+        user: ${{secrets.HAOMA}}
         password: ${{secrets.MM}}
         appid: ${{secrets.APPID}}
       run: node index.js unicom --user=${user} --password=${password} --appid=${appid} --tryrun

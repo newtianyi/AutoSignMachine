@@ -86,48 +86,48 @@ var start = async (params) => {
   // })
 
   // 首页-签到有礼-免费抽-抓OPPO手机
-  await scheduler.regTask('dailyGrabdollPage', async (request) => {
-    await require('./dailyGrabdollPage').doTask(request, options)
-  }, taskOption)
+  //await scheduler.regTask('dailyGrabdollPage', async (request) => {
+    //await require('./dailyGrabdollPage').doTask(request, options)
+  //}, taskOption)
 
   // 首页-签到有礼-免费抽-拿666积分-豪礼大派送抽奖
-  await scheduler.regTask('jflottery', async (request) => {
-    await require('./jflottery').timesDraw(request, options)
-  }, taskOption)
+  //await scheduler.regTask('jflottery', async (request) => {
+    //await require('./jflottery').timesDraw(request, options)
+  //}, taskOption)
 
   // 首页-签到有礼-免费抽-拿苹果iPad Pro(摇一摇)
-  await scheduler.regTask('dailyYYY', async (request) => {
-    await require('./dailyYYY').doTask(request, options)
-  }, taskOption)
+  //await scheduler.regTask('dailyYYY', async (request) => {
+    //await require('./dailyYYY').doTask(request, options)
+  //}, taskOption)
 
-  // 首页-签到有礼-免费抽-华为mate40pro(刮刮乐)
-  await scheduler.regTask('dailyVideoScratchcard', async (request) => {
-    await require('./dailyVideoScratchcard').doTask(request, options)
-  }, taskOption)
+  //// 首页-签到有礼-免费抽-华为mate40pro(刮刮乐)
+  //await scheduler.regTask('dailyVideoScratchcard', async (request) => {
+    //await require('./dailyVideoScratchcard').doTask(request, options)
+  //}, taskOption)
 
   // 首页-签到有礼-免费抽-赢三星Galaxy Z(试试手气)
-  await scheduler.regTask('dailyCheapStorePage', async (request) => {
-    await require('./dailyCheapStorePage').doTask(request, options)
-  }, {
-    isCircle: true,
-    intervalTime: 4 * 3600,
-    ...taskOption
-  })
+  //await scheduler.regTask('dailyCheapStorePage', async (request) => {
+    //await require('./dailyCheapStorePage').doTask(request, options)
+  //}, {
+    //isCircle: true,
+    //intervalTime: 4 * 3600,
+    //...taskOption
+  //})
 
   // 首页-签到有礼-免费抽-拆华为Pad(去抽奖)
-  await scheduler.regTask('dailyLKMH', async (request) => {
-    await require('./dailyLKMH').doTask(request, options)
-  }, taskOption)
+  //await scheduler.regTask('dailyLKMH', async (request) => {
+    //await require('./dailyLKMH').doTask(request, options)
+  //}, taskOption)
 
   // 首页-签到有礼-免费抽-拿iPhone12(摇一摇)
-  await scheduler.regTask('dailyYYQ', async (request) => {
-    await require('./dailyYYQ').doTask(request, options)
-  }, taskOption)
+  //await scheduler.regTask('dailyYYQ', async (request) => {
+    //await require('./dailyYYQ').doTask(request, options)
+  //}, taskOption)
 
   // 首页-签到有礼-免费抽-赢Apple Watch(去抽奖)
-  await scheduler.regTask('dailyTurntablePage', async (request) => {
-    await require('./dailyTurntablePage').doTask(request, options)
-  }, taskOption)
+  //await scheduler.regTask('dailyTurntablePage', async (request) => {
+    //await require('./dailyTurntablePage').doTask(request, options)
+  //}, taskOption)
 
   // 首页-签到有礼-赚更多福利-看视频奖励5积分
   await scheduler.regTask('dailyVideo', async (request) => {
