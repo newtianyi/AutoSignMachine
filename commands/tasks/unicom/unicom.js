@@ -49,6 +49,21 @@ var start = async (params) => {
     await require('./woTree').doTask(request, options)
   }, taskOption)
 
+  // 首页-签到有礼-免费领-浏览领积分
+  await scheduler.regTask('dailyLiuLan', async (request) => {
+    await require('./dailyTTliulan').doTask(request, options)
+  }, taskOption)
+
+  // 首页-签到有礼-赚更多福利-看视频奖励5积分
+  await scheduler.regTask('dailyVideo', async (request) => {
+    await require('./dailyVideo').doTask(request, options)
+  }, taskOption)
+
+  // 首页-签到有礼-赚更多福利-天天抽好礼
+  await scheduler.regTask('dailylottery', async (request) => {
+    await require('./dailylottery').doTask(request, options)
+  }, taskOption)
+
   await scheduler.regTask('dailyBookRead', async (request) => {
     // 首页-小说-阅读越有礼打卡赢话费
     await require('./dailyBookRead').doTask(request, options)
@@ -68,11 +83,6 @@ var start = async (params) => {
   await scheduler.regTask('dailyBookLuckdraw', async (request) => {
     // 首页-小说-阅读福利抽大奖
     await require('./dailyBookLuckdraw').doTask(request, options)
-  }, taskOption)
-
-  // 首页-签到有礼-免费领-浏览领积分
-  await scheduler.regTask('dailyLiuLan', async (request) => {
-    await require('./dailyTTliulan').doTask(request, options)
   }, taskOption)
 
   // 首页-签到有礼-免费拿-看视频夺宝
@@ -128,16 +138,6 @@ var start = async (params) => {
   //await scheduler.regTask('dailyTurntablePage', async (request) => {
     //await require('./dailyTurntablePage').doTask(request, options)
   //}, taskOption)
-
-  // 首页-签到有礼-赚更多福利-看视频奖励5积分
-  await scheduler.regTask('dailyVideo', async (request) => {
-    await require('./dailyVideo').doTask(request, options)
-  }, taskOption)
-
-  // 首页-签到有礼-赚更多福利-天天抽好礼
-  await scheduler.regTask('dailylottery', async (request) => {
-    await require('./dailylottery').doTask(request, options)
-  }, taskOption)
 
   // 首页-游戏-娱乐中心-每日打卡
   await scheduler.regTask('producGame', async (request) => {
