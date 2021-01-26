@@ -64,27 +64,6 @@ var start = async (params) => {
     await require('./dailylottery').doTask(request, options)
   }, taskOption)
 
-  await scheduler.regTask('dailyBookRead', async (request) => {
-    // 首页-小说-阅读越有礼打卡赢话费
-    await require('./dailyBookRead').doTask(request, options)
-    await require('./dailyVideoBook').doTask(request, options)
-  }, taskOption)
-
-  // 首页-小说-读满10章赢好礼
-  await scheduler.regTask('dailyBookRead10doDraw', async (request) => {
-    // 首页-小说-读满10章赢好礼
-    await require('./dailyVideoBook').read10doDraw(request, options)
-    // 首页-小说-读满10章赢好礼-看视频领2积分
-    await require('./dailyVideoBook').read10doDrawLookVideoDouble(request, options)
-    // 首页-签到有礼-免流量得福利-3积分天天拿(阅读打卡)
-    await require('./dailyVideoBook').giftBoints(request, options)
-  }, taskOption)
-
-  await scheduler.regTask('dailyBookLuckdraw', async (request) => {
-    // 首页-小说-阅读福利抽大奖
-    await require('./dailyBookLuckdraw').doTask(request, options)
-  }, taskOption)
-
   // 首页-签到有礼-免费拿-看视频夺宝
   // 易出现本次操作需要进行验证，暂时注释
   // await scheduler.regTask('dailyVideoFreeGoods', async (request) => {
@@ -125,9 +104,9 @@ var start = async (params) => {
   //})
 
   // 首页-签到有礼-免费抽-拆华为Pad(去抽奖)
-  //await scheduler.regTask('dailyLKMH', async (request) => {
-    //await require('./dailyLKMH').doTask(request, options)
-  //}, taskOption)
+  await scheduler.regTask('dailyLKMH', async (request) => {
+    await require('./dailyLKMH').doTask(request, options)
+  }, taskOption)
 
   // 首页-签到有礼-免费抽-拿iPhone12(摇一摇)
   //await scheduler.regTask('dailyYYQ', async (request) => {
@@ -138,6 +117,27 @@ var start = async (params) => {
   //await scheduler.regTask('dailyTurntablePage', async (request) => {
     //await require('./dailyTurntablePage').doTask(request, options)
   //}, taskOption)
+
+  await scheduler.regTask('dailyBookRead', async (request) => {
+    // 首页-小说-阅读越有礼打卡赢话费
+    await require('./dailyBookRead').doTask(request, options)
+    await require('./dailyVideoBook').doTask(request, options)
+  }, taskOption)
+
+  // 首页-小说-读满10章赢好礼
+  await scheduler.regTask('dailyBookRead10doDraw', async (request) => {
+    // 首页-小说-读满10章赢好礼
+    await require('./dailyVideoBook').read10doDraw(request, options)
+    // 首页-小说-读满10章赢好礼-看视频领2积分
+    await require('./dailyVideoBook').read10doDrawLookVideoDouble(request, options)
+    // 首页-签到有礼-免流量得福利-3积分天天拿(阅读打卡)
+    await require('./dailyVideoBook').giftBoints(request, options)
+  }, taskOption)
+
+  await scheduler.regTask('dailyBookLuckdraw', async (request) => {
+    // 首页-小说-阅读福利抽大奖
+    await require('./dailyBookLuckdraw').doTask(request, options)
+  }, taskOption)
 
   // 首页-游戏-娱乐中心-每日打卡
   await scheduler.regTask('producGameSignin', async (request) => {
