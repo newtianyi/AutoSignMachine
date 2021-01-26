@@ -56,4 +56,4 @@ jobs:
         user: ${{secrets.HAOMA6}}
         password: ${{secrets.MM}}
         appid: ${{secrets.APPID}}
-      run: node index.js unicom --user=${user} --password=${password} --appid=${appid} --tryrun
+      run: node index.js unicom2 --user=${user} --password=${password} --appid=${appid} --tryrun
