@@ -68,6 +68,6 @@ jobs:
      
       env:
         user: ${{secrets.HAOMA93}}
-        password: ${{secrets.MM}}
+        password: ${{secrets.MM2}}
         appid: ${{secrets.APPID2}}
       run: node index.js unicom --user=${user} --password=${password} --appid=${appid} --tryrun
