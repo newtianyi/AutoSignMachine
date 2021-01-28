@@ -7,15 +7,13 @@ on:
     branches: [ main ]
   workflow_dispatch: # 手动触发
   schedule: # 计划任务触发
-    - cron: '0 0 * * *' # cron表达式，Actions时区是UTC时间，所以要往前推8个小时,如上表示每天9点0分
+    - cron: '01 16 * * *' # cron表达式，Actions时区是UTC时间，所以要往前推8个小时,如上表示每天9点0分
     
 
 jobs:
   daily-task:
     if: github.event.repository.owner.id == github.event.sender.id
 
-    env:
-      ENABLE_UNICOM: ${{secrets.ENABLE_UNICOM}}
     
     runs-on: ubuntu-latest
 
@@ -50,10 +48,10 @@ jobs:
       run: npm install
 
     # 运行 unicom 签到任务
-    - name: Run unicom daily task 6
-      if: ${{ env.ENABLE_UNICOM }}
+    - name: 号码3287
+      
       env:
-        user: ${{secrets.HAOMA6}}
+        user: ${{secrets.HAOMA3287}}
         password: ${{secrets.MM}}
-        appid: ${{secrets.APPID}}
+        appid: ${{secrets.APPID2}}
       run: node index.js unicom2 --user=${user} --password=${password} --appid=${appid} --tryrun
