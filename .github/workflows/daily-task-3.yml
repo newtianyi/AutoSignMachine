@@ -5,17 +5,15 @@ on:
   
   push: # push触发
     branches: [ main ]
-  workflow_dispatch: # 手动触发
+  workflow_dispatch: # 手动#触发
   schedule: # 计划任务触发
-    - cron: '0 0 * * *' # cron表达式，Actions时区是UTC时间，所以要往前推8个小时,如上表示每天9点0分
+    - cron: '*/30 20-23,16-17 * * *' # cron表达式，Actions时区是UTC时间，所以要往前推8个小时,如上表示每天9点0分
     
 
 jobs:
   daily-task:
     if: github.event.repository.owner.id == github.event.sender.id
 
-    env:
-      ENABLE_UNICOM: ${{secrets.ENABLE_UNICOM}}
     
     runs-on: ubuntu-latest
 
@@ -50,10 +48,26 @@ jobs:
       run: npm install
 
     # 运行 unicom 签到任务
-    - name: Run unicom daily task 3
-      if: ${{ env.ENABLE_UNICOM }}
+    - name: 号码32
+     
       env:
-        user: ${{secrets.HAOMA3}}
+        user: ${{secrets.HAOMA32}}
         password: ${{secrets.MM}}
         appid: ${{secrets.APPID}}
-      run: node index.js unicom2 --user=${user} --password=${password} --appid=${appid} --tryrun
+      run: node index.js unicom --user=${user} --password=${password} --appid=${appid} --tryrun
+   
+    - name: 号码59568
+     
+      env:
+        user: ${{secrets.HAOMA59}}
+        password: ${{secrets.MM}}
+        appid: ${{secrets.APPID}}
+      run: node index.js unicom --user=${user} --password=${password} --appid=${appid} --tryrun
+    
+    - name: 号码88765
+     
+      env:
+        user: ${{secrets.HAOMA88}}
+        password: ${{secrets.MM}}
+        appid: ${{secrets.APPID}}
+      run: node index.js unicom --user=${user} --password=${password} --appid=${appid} --tryrun
