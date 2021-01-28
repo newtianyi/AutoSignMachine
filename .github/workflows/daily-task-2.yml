@@ -7,7 +7,7 @@ on:
     branches: [ main ]
   workflow_dispatch: # 手动#触发
   schedule: # 计划任务触发
-    - cron: '*/30 20-23,16 * * *' # cron表达式，Actions时区是UTC时间，所以要往前推8个小时,如上表示每天9点0分
+    - cron: '0 30 16 * * ?' # cron表达式，Actions时区是UTC时间，所以要往前推8个小时,如上表示每天9点0分
     
 
 jobs:
@@ -48,7 +48,7 @@ jobs:
       run: npm install
 
     # 运行 unicom 签到任务
-    - name: 号码52
+    - name: 号码5276
      
       env:
         user: ${{secrets.HAOMA52}}
@@ -56,7 +56,7 @@ jobs:
         appid: ${{secrets.APPID}}
       run: node index.js unicom --user=${user} --password=${password} --appid=${appid} --tryrun
    
-    - name: 号码53
+    - name: 号码5376
      
       env:
         user: ${{secrets.HAOMA53}}
@@ -64,7 +64,7 @@ jobs:
         appid: ${{secrets.APPID}}
       run: node index.js unicom --user=${user} --password=${password} --appid=${appid} --tryrun
     
-    - name: 号码22
+    - name: 号码2276
      
       env:
         user: ${{secrets.HAOMA22}}
