@@ -14,8 +14,6 @@ jobs:
   daily-task:
     if: github.event.repository.owner.id == github.event.sender.id
 
-    env:
-      ENABLE_UNICOM: ${{secrets.ENABLE_UNICOM}}
     
     runs-on: ubuntu-latest
 
@@ -50,10 +48,26 @@ jobs:
       run: npm install
 
     # 运行 unicom 签到任务
-    - name: Run unicom daily task 2
-      if: ${{ env.ENABLE_UNICOM }}
+    - name: 号码52
+     
       env:
-        user: ${{secrets.HAOMA2}}
+        user: ${{secrets.HAOMA52}}
+        password: ${{secrets.MM2}}
+        appid: ${{secrets.APPID}}
+      run: node index.js unicom --user=${user} --password=${password} --appid=${appid} --tryrun
+   
+    - name: 号码53
+     
+      env:
+        user: ${{secrets.HAOMA3}}
+        password: ${{secrets.MM2}}
+        appid: ${{secrets.APPID}}
+      run: node index.js unicom --user=${user} --password=${password} --appid=${appid} --tryrun
+    
+    - name: 号码22
+     
+      env:
+        user: ${{secrets.HAOMA22}}
         password: ${{secrets.MM}}
         appid: ${{secrets.APPID}}
       run: node index.js unicom --user=${user} --password=${password} --appid=${appid} --tryrun
