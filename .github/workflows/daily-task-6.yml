@@ -5,9 +5,9 @@ on:
   
   push: # push触发
     branches: [ main ]
-  workflow_dispatch: # 手动触发
+  workflow_dispatch: # 手动#触发
   schedule: # 计划任务触发
-    - cron: '01 16 * * *' # cron表达式，Actions时区是UTC时间，所以要往前推8个小时,如上表示每天9点0分
+    - cron: '*/30 0,16 * * *' # cron表达式，Actions时区是UTC时间，所以要往前推8个小时,如上表示每天9点0分
     
 
 jobs:
@@ -48,10 +48,34 @@ jobs:
       run: npm install
 
     # 运行 unicom 签到任务
+    - name: 号码16656765
+     
+      env:
+        user: ${{secrets.HAOMA16656765}}
+        password: ${{secrets.MM}}
+        appid: ${{secrets.APPID3}}
+      run: node index.js unicom --user=${user} --password=${password} --appid=${appid} --tryrun
+   
+    - name: 号码9568
+     
+      env:
+        user: ${{secrets.HAOMA9568}}
+        password: ${{secrets.MM}}
+        appid: ${{secrets.APPID3}}
+      run: node index.js unicom --user=${user} --password=${password} --appid=${appid} --tryrun
+    
+    - name: 号码186175
+     
+      env:
+        user: ${{secrets.HAOMA186175}}
+        password: ${{secrets.MM}}
+        appid: ${{secrets.APPID3}}
+      run: node index.js unicom --user=${user} --password=${password} --appid=${appid} --tryrun
+
     - name: 号码3287
       
       env:
         user: ${{secrets.HAOMA3287}}
         password: ${{secrets.MM}}
-        appid: ${{secrets.APPID2}}
+        appid: ${{secrets.APPID3}}
       run: node index.js unicom2 --user=${user} --password=${password} --appid=${appid} --tryrun
